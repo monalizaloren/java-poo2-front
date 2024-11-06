@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Importando useNavigate
 import logo from './assets/logo.png'; // Substitua pelo caminho correto da logo
 import mainImage from './assets/imagens.png'; // Substitua pelo caminho correto da imagem da esquerda
 import { FaEnvelope, FaLock } from 'react-icons/fa';
@@ -9,15 +9,15 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate(); // Use o hook useNavigate
+  const navigate = useNavigate(); // Inicializa o useNavigate
 
   const handleLogin = (e) => {
     e.preventDefault();
     // Lógica de autenticação (a ser implementada)
     console.log('Email:', email, 'Password:', password);
-
-    // Após autenticação bem-sucedida, redirecione para a rota raiz
-    navigate('/'); // Redireciona para a rota raiz
+    
+    // Após a autenticação bem-sucedida, redireciona para a rota /home
+    navigate('/home');
   };
 
   return (
@@ -27,7 +27,7 @@ const Login = () => {
         <div className="login-image hidden md:flex w-1/2">
           <img src={mainImage} alt="Fashion display" className="w-full h-full object-cover rounded-l-lg" />
         </div>
-
+        
         {/* Formulário de login */}
         <div className="login-form w-full md:w-1/2 p-8 flex flex-col items-center">
           <img src={logo} alt="Logo" className="mx-auto mb-4 w-58" />

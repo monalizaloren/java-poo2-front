@@ -12,7 +12,7 @@ import AddProduct from './components/AddProduct';
 import ProductDetails from './components/ProductDetails';
 import Categories from './components/Categories';
 import Login from './components/Auth/Login';
-import Register from './components/Auth/Register'; // Adicione esta importação
+import Register from './components/Auth/Register';
 import './App.css';
 import { createProduct, getAllProducts, getProductById, updateProduct, deleteProduct } from './services/api';
 
@@ -59,8 +59,9 @@ function App() {
       <div className="dashboard bg-white">
         <ConditionalHeader />
         <Routes>
+          <Route path="/login" element={<Login />} /> {/* Definindo /login como rota inicial */}
           <Route
-            path="/"
+            path="/home"
             element={
               <div className="main-container flex flex-col md:flex-row gap-4 p-4">
                 <Menu />
@@ -85,8 +86,7 @@ function App() {
           <Route path="/sales-chart" element={<SalesChart />} />
           <Route path="/sales-chart-page" element={<SalesChartPage />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} /> {/* Adicione esta linha para a rota de cadastro */}
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </Router>
@@ -96,7 +96,7 @@ function App() {
 function ConditionalHeader() {
   const location = useLocation();
   
-  return (location.pathname !== '/login' && location.pathname !== '/register') ? <Header /> : null;
+  return location.pathname !== '/login' && location.pathname !== '/register' ? <Header /> : null;
 }
 
 export default App;
