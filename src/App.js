@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import SalesChart from './components/SalesChart';
@@ -10,8 +10,9 @@ import LowStock from './components/LowStock';
 import ProductSearch from './components/ProductSearch';
 import AddProduct from './components/AddProduct';
 import ProductDetails from './components/ProductDetails';
-import Categories from './components/Categories'; // Importando o novo componente
-
+import Categories from './components/Categories';
+import Login from './components/Auth/Login';
+import Register from './components/Auth/Register'; // Adicione esta importação
 import './App.css';
 import { createProduct, getAllProducts, getProductById, updateProduct, deleteProduct } from './services/api';
 
@@ -56,7 +57,7 @@ function App() {
   return (
     <Router>
       <div className="dashboard bg-white">
-        <Header />
+        <ConditionalHeader />
         <Routes>
           <Route
             path="/"
@@ -84,10 +85,18 @@ function App() {
           <Route path="/sales-chart" element={<SalesChart />} />
           <Route path="/sales-chart-page" element={<SalesChartPage />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} /> {/* Adicione esta linha para a rota de cadastro */}
         </Routes>
       </div>
     </Router>
   );
+}
+
+function ConditionalHeader() {
+  const location = useLocation();
+  
+  return (location.pathname !== '/login' && location.pathname !== '/register') ? <Header /> : null;
 }
 
 export default App;

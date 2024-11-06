@@ -358,3 +358,97 @@ button[type="submit"]:hover {
 .product-details .edit-input[type="number"] {
   -moz-appearance: textfield;
 }
+/* Login Page Styles */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh; /* Ocupa toda a altura da tela */
+}
+
+.login-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-card h2 {
+  color: #ff6600;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.login-card h3 {
+  color: #333;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+/* Estilos do formulário de login */
+.login-container {
+  background-color: #f8f9fa;
+}
+
+.login-content {
+  flex: 1; /* Ocupa toda a largura disponível */
+  max-width: 1200px; /* Limite de largura */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden; /* Impede rolagem no conteúdo do login */
+}
+
+
+.login-form {
+  padding: 2rem;
+  flex: 1; /* Permite que o formulário cresça na tela */
+}
+
+
+.input-group label {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border: 1px solid #ff6600;
+  border-radius: 8px;
+  background-color: #fff5e6;
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: transparent;
+}
+
+.input-group input::placeholder {
+  color: #aaa;
+}
+
+button[type="submit"] {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #e65c00;
+}
+
+.login-form p a {
+  color: #ff6600;
+  font-weight: bold;
+}
