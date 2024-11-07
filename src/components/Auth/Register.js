@@ -11,15 +11,46 @@ const Register = () => {
   const [fullName, setFullName] = useState('');
   const [storeName, setStoreName] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false); // Estado para o popup de sucesso
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Lógica de registro (a ser implementada)
-    console.log('Email:', email, 'Password:', password, 'Full Name:', fullName, 'Store Name:', storeName);
+    try {
+      const response = await fetch('http://localhost:8082/usuarios', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, nome: fullName, storeName, password }),
+      });
+
+      if (response.ok) {
+        setShowSuccessPopup(true); // Mostra o popup de sucesso
+        setTimeout(() => setShowSuccessPopup(false), 3000); // Fecha o popup automaticamente após 3 segundos
+      } else {
+        console.error('Erro ao registrar o usuário');
+      }
+    } catch (error) {
+      console.error('Erro de rede:', error);
+    }
   };
 
   return (
-    <div className="login-container flex min-h-screen items-center justify-center bg-gray-100">
+    <div className="login-container flex min-h-screen items-center justify-center bg-gray-100 relative">
+      {showSuccessPopup && (
+        <div className="popup fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+          <div className="popup-content bg-white p-6 rounded-lg shadow-lg text-center">
+            <h2 className="text-green-500 font-semibold">Usuário cadastrado com sucesso!</h2>
+            <button 
+              onClick={() => setShowSuccessPopup(false)} 
+              className="mt-4 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
+      
       <div className="login-content flex max-w-4xl shadow-lg bg-white rounded-lg overflow-hidden">
         {/* Imagem à esquerda */}
         <div className="login-image hidden md:flex w-1/2">

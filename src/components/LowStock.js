@@ -7,8 +7,8 @@ const LowStock = () => {
   useEffect(() => {
     const fetchProductCounts = async () => {
       try {
-        const response = await axios.get('http://localhost:8082/produto/counts');
-        setProductCounts(response.data);
+        const response = await axios.get('http://localhost:8082/produto/');
+        setProductCounts(response.data); // Removido o filtro para exibir todos os produtos
       } catch (error) {
         console.error('Erro ao buscar contagem de produtos:', error);
       }
@@ -19,16 +19,16 @@ const LowStock = () => {
 
   return (
     <div className="low-stock p-4 bg-white shadow-lg rounded-lg max-w-md mx-auto">
-      <h3 className="text-lg font-semibold mb-4 text-center text-orange-600">Acabando no estoque!</h3>
+      <h3 className="text-lg font-semibold mb-4 text-center text-orange-600">Estoque de Produtos</h3>
       <div className="stock-list space-y-2">
         {productCounts.length > 0 ? (
-          productCounts.map((product, index) => (
+          productCounts.map((product) => (
             <div
-              key={index}
+              key={product.idProduct}
               className="stock-item flex justify-between items-center p-2 border-b border-gray-300 hover:bg-orange-50 rounded"
             >
-              <span className="text-gray-800 font-medium">{product.nome}   </span>
-              <span className="text-orange-500 font-bold">   {product.count} </span>
+              <span className="text-gray-800 font-medium">{product.nome}</span>
+              <span className="text-orange-500 font-bold">{product.quantidadeEstoque}</span>
             </div>
           ))
         ) : (

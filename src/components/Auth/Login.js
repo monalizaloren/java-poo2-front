@@ -11,14 +11,28 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate(); // Inicializa o useNavigate
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Lógica de autenticação (a ser implementada)
-    console.log('Email:', email, 'Password:', password);
-    
-    // Após a autenticação bem-sucedida, redireciona para a rota /home
-    navigate('/home');
-  };
+    try {
+        const response = await fetch('http://localhost:8082/usuarios/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+            // Sucesso na autenticação, redireciona para /home
+            navigate('/home');
+        } else {
+            console.error('Erro ao fazer login');
+        }
+    } catch (error) {
+        console.error('Erro de rede:', error);
+    }
+};
+
 
   return (
     <div className="login-container flex min-h-screen items-center justify-center bg-gray-100">

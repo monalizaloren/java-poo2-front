@@ -12,6 +12,7 @@ import AddProduct from './components/AddProduct';
 import ProductDetails from './components/ProductDetails';
 import Categories from './components/Categories';
 import Login from './components/Auth/Login';
+import Stock from './components/Stock';
 import Register from './components/Auth/Register';
 import './App.css';
 import { createProduct, getAllProducts, getProductById, updateProduct, deleteProduct } from './services/api';
@@ -87,6 +88,8 @@ function App() {
           <Route path="/sales-chart-page" element={<SalesChartPage />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/stock" element={<Stock />} />
+
         </Routes>
       </div>
     </Router>
