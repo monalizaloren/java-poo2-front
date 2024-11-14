@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://3202-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app' // URL base para o backend
+  baseURL: 'https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app' // URL base para o backend
 });
 
 export const getAllProducts = async () => {
