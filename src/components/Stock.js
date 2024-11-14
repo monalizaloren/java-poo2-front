@@ -10,7 +10,16 @@ const Stock = () => {
   useEffect(() => {
     const fetchStock = async () => {
       try {
-        const response = await axios.get('http://localhost:8082/produto/');
+        const response = await axios.get(
+          'https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'ngrok-skip-browser-warning': 'true', 
+            },
+          }
+        );
         setProducts(response.data);
       } catch (error) {
         console.error('Erro ao buscar estoque:', error);

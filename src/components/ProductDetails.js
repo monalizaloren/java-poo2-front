@@ -11,7 +11,16 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:8082/produto/${id}`);
+        const response = await axios.get(
+          'https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'ngrok-skip-browser-warning': 'true', 
+            },
+          }
+        );
         setProduct(response.data);
       } catch (error) {
         console.error('Erro ao buscar produto:', error);
@@ -27,21 +36,30 @@ const ProductDetails = () => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`http://localhost:8082/produto/${id}`, product);
+      await axios.put(`https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/${id}`, product, {
+        headers: {
+          'ngrok-skip-browser-warning': 'true', // Cabeçalho para pular o aviso do Ngrok
+        },
+      });
       setIsEditing(false);
     } catch (error) {
       console.error('Erro ao atualizar produto:', error);
     }
   };
-
+  
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8082/produto/${id}`);
+      await axios.delete(`https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/${id}`, {
+        headers: {
+          'ngrok-skip-browser-warning': 'true', // Cabeçalho para pular o aviso do Ngrok
+        },
+      });
       navigate('/products');
     } catch (error) {
       console.error('Erro ao deletar produto:', error);
     }
   };
+  
 
   if (!product) return <div>Carregando...</div>;
 

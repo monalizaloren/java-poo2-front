@@ -23,13 +23,22 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8082/produto/', product);
+      const response = await axios.post(
+        'https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/',
+        product,
+        {
+          headers: {
+            'ngrok-skip-browser-warning': 'true', // Cabeçalho para pular o aviso do Ngrok
+          },
+        }
+      );
       setShowPopup(true); // Exibe o popup de sucesso
     } catch (error) {
       console.error('Erro ao adicionar produto:', error);
       alert('Erro ao adicionar produto. Verifique os dados e tente novamente.');
     }
   };
+  
 
   return (
     <div className="add-product-form-container relative">

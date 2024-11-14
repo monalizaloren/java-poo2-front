@@ -12,7 +12,16 @@ const SalesForm = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:8082/produto/');
+      const response = await axios.get(
+        'https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/',
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': 'true', 
+          },
+        }
+      );
       setProducts(response.data);
     } catch (error) {
       console.error('Erro ao buscar produtos:', error);
@@ -31,9 +40,12 @@ const SalesForm = () => {
     }
 
     try {
-      await axios.post(`http://localhost:8082/produto/venda/${selectedProduct}`, null, {
+      await axios.post(`https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/venda/${selectedProduct}`, null, {
         params: {
           quantidade: quantity,
+        },
+        headers: {
+          'ngrok-skip-browser-warning': 'true', // Cabeçalho para pular o aviso do Ngrok
         },
       });
 
