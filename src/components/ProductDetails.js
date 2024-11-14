@@ -12,9 +12,8 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          'https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/',
+          `https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/${id}`,
           {
-            method: 'GET',
             headers: {
               'Content-Type': 'application/json',
               'ngrok-skip-browser-warning': 'true', 
@@ -28,7 +27,7 @@ const ProductDetails = () => {
     };
     fetchProduct();
   }, [id]);
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
