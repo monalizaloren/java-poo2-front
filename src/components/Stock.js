@@ -11,7 +11,7 @@ const Stock = () => {
     const fetchStock = async () => {
       try {
         const response = await axios.get(
-          'https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/',
+          'https://b605-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/',
           {
             method: 'GET',
             headers: {

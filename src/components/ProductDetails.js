@@ -12,7 +12,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/${id}`,
+          `https://b605-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/${id}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const ProductDetails = () => {
   
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/${id}`, {
+      await axios.delete(`https://b605-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/${id}`, {
         headers: {
           'ngrok-skip-browser-warning': 'true', // Cabeçalho para pular o aviso do Ngrok
         },

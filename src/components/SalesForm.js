@@ -40,7 +40,7 @@ const SalesForm = () => {
     }
 
     try {
-      await axios.post(`https://44f0-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/venda/${selectedProduct}`, null, {
+      await axios.post(`https://b605-2804-29b8-50b8-614-794c-9cd6-39ea-a332.ngrok-free.app/produto/venda/${selectedProduct}`, null, {
         params: {
           quantidade: quantity,
         },
